@@ -61,7 +61,22 @@ match guess.cmp(&secret_number) {
 }
 ```
 
-一个 match 表达式由 分支（arms） 构成。一个分支包含一个 模式（pattern）和表达式开头的值与分支模式相匹配时应该执行的代码。Rust 获取提供给 match 的值并挨个检查每个分支的模式。match 结构和模式是 Rust 中强大的功能，它体现了代码可能遇到的多种情形，并帮助你确保没有遗漏处理。这些功能将分别在第六章和第十八章详细介绍。
+一个 match 表达式由 分支（arms） 构成。一个分支包含一个 模式（pattern）和表达式开头的值与分支模式相匹配时应该执行的代码。Rust 获取提供给 match 的值并挨个检查每个分支的模式。
+
+* 静态强类型系统
+
+```guess.cmp(&secret_number)```这里编译会报```mismatched types```( 不匹配的类型)，```guess``` 是 ```String``` 类型，而```secret_number```，是数字类型。
+
+```Rust
+let guess: u32 = guess.trim().parse()
+    .expect("Please type a number!");
+```
+
+这里创建了一个叫做 guess 的变量。不过等等，不是已经有了一个叫做 guess 的变量了吗？确实如此，不过 Rust 允许用一个新值来 隐藏 （shadow） guess 之前的值。这个功能常用在需要转换值类型之类的场景。它允许我们复用 guess 变量的名字，而不是被迫创建两个不同变量，诸如 guess_str 和 guess 之类。（第三章会介绍 shadowing 的更多细节。）
+
+
+
+
 
 
 
